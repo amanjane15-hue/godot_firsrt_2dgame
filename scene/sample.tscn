@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc0h5heptja8u"]
+
+[ext_resource type="Texture2D" uid="uid://btwkhhhlric3b" path="res://pico 8/kenney_pico-8-city/Sample.png" id="1_c0x4m"]
+
+[node name="Sample" type="Sprite2D"]
+position = Vector2(584, 329)
+scale = Vector2(1.26435, 1.26139)
+texture = ExtResource("1_c0x4m")

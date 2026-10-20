@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://q37vajqr4vwx"]
+
+[ext_resource type="Script" uid="uid://d2wj7j100q1p8" path="res://scripts/car.gd" id="1_a1hbt"]
+[ext_resource type="Texture2D" uid="uid://brri2ueh76827" path="res://pico 8/kenney_pico-8-city/Tiles/tile_0277.png" id="1_tphm3"]
+[ext_resource type="Texture2D" uid="uid://b34nidq8w87uy" path="res://pico 8/kenney_pico-8-city/Tiles/tile_0278.png" id="2_a1hbt"]
+[ext_resource type="Texture2D" uid="uid://c4y301hnklfp4" path="res://download (1).png" id="2_x2b5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1hbt"]
+size = Vector2(13.8571, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2b5g"]
+size = Vector2(14.8571, 9.14286)
+
+[node name="Car" type="Area2D"]
+z_index = 100
+rotation = 4.71239
+scale = Vector2(7, 7)
+collision_mask = 256
+script = ExtResource("1_a1hbt")
+
+[node name="Spritteste2D" type="Sprite2D" parent="."]
+z_index = 100
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(8, -1.81899e-12)
+rotation = -3.14159
+scale = Vector2(0.0426615, 0.0278807)
+texture = ExtResource("2_x2b5g")
+
+[node name="sprite" type="Node2D" parent="."]
+
+[node name="Tile0277" type="Sprite2D" parent="sprite"]
+texture_filter = 1
+texture = ExtResource("1_tphm3")
+
+[node name="Tile0278" type="Sprite2D" parent="sprite"]
+texture_filter = 1
+position = Vector2(8, 0)
+texture = ExtResource("2_a1hbt")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.0064, 0.075237)
+scale = Vector2(0.693407, 0.401862)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["car"]]
+position = Vector2(4.07143, 0.142847)
+shape = SubResource("RectangleShape2D_a1hbt")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(3.85714, 0.285704)
+shape = SubResource("RectangleShape2D_x2b5g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

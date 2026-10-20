@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1ya2w0js0bma"]
+
+[ext_resource type="Texture2D" uid="uid://b5vpjti3ljijd" path="res://pico 8/kenney_pico-8-city/Untitled design (6).png" id="1_5fq6r"]
+[ext_resource type="Texture2D" uid="uid://6fq03doa0nfi" path="res://pixel platformer/kenney_pixel-platformer/Tiles/tile_0069.png" id="2_k231w"]
+[ext_resource type="Texture2D" uid="uid://f5pxm2y8ua68" path="res://pixel platformer/kenney_pixel-platformer/Tiles/tile_0126.png" id="3_adi2d"]
+[ext_resource type="Texture2D" uid="uid://d4h18t3vd3o3j" path="res://pixel platformer/kenney_pixel-platformer/Tiles/tile_0145.png" id="4_adi2d"]
+
+[node name="newworld" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(573, 327)
+scale = Vector2(2.57813, 2.57147)
+texture = ExtResource("1_5fq6r")
+
+[node name="Tile0069" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(145, 620)
+scale = Vector2(2.72, 3.68)
+texture = ExtResource("2_k231w")
+
+[node name="Tile0126" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(145, 244)
+scale = Vector2(2.31434, 3.10115)
+texture = ExtResource("3_adi2d")
+
+[node name="Tile0145" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(264, 398)
+scale = Vector2(0.775119, 0.812222)
+texture = ExtResource("4_adi2d")

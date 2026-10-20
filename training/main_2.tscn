@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dguof4f6tp4eg"]
+
+[ext_resource type="PackedScene" uid="uid://cwoqudoingeab" path="res://training/character_body_2d.tscn" id="1_uscqo"]
+[ext_resource type="PackedScene" uid="uid://covodphc0ldti" path="res://training/forest.tscn" id="2_gx5ar"]
+
+[node name="Main2" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_uscqo")]
+
+[node name="forest" parent="." instance=ExtResource("2_gx5ar")]

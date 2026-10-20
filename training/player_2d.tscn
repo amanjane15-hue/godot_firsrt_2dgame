@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdrffg5th8kdg"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(14, 40)
+
+[node name="Player2D" type="CharacterBody2D"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.6)
+shape = SubResource("1")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="AnimationManager" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.053, 1.14)
+animation = &""
+
+[node name="FloorDetection" type="Node2D" parent="."]
+
+[node name="FloorDetectionRight" type="RayCast2D" parent="FloorDetection"]
+position = Vector2(5, 0)
+
+[node name="FloorDetectionLeft" type="RayCast2D" parent="FloorDetection"]
+position = Vector2(-5, 0)

@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://vgqgu2mc5nwq"]
+
+[ext_resource type="Script" uid="uid://ugltafeneils" path="res://scripts/player.gd" id="1_hjaqi"]
+[ext_resource type="Texture2D" uid="uid://cxo3hjm1cky0n" path="res://pixel platformer/kenney_pixel-platformer/Tiles/Characters/tile_0024.png" id="2_s4jxa"]
+[ext_resource type="AudioStream" uid="uid://dc0dhdgnxs7id" path="res://Sketchbook 2024-03-30_01_L02.ogg" id="3_fvtld"]
+[ext_resource type="Texture2D" uid="uid://1gj5xlnlo1uk" path="res://pixel platformer/kenney_pixel-platformer/Tiles/Characters/tile_0025.png" id="3_oh5ij"]
+[ext_resource type="Texture2D" uid="uid://cy37gnbi520u6" path="res://pixel platformer/kenney_pixel-platformer/Tiles/Characters/tile_0026.png" id="4_hp4bs"]
+[ext_resource type="AudioStream" uid="uid://byutvnw2mnisf" path="res://slap.wav" id="6_oh5ij"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hjaqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s4jxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oh5ij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hp4bs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oh5ij")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hjaqi"]
+radius = 6.08316
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(242, 161)
+scale = Vector2(10.0332, 9.91429)
+script = ExtResource("1_hjaqi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.0996691, -2.01729)
+sprite_frames = SubResource("SpriteFrames_hjaqi")
+animation = &"Fly"
+frame_progress = 0.732943
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hjaqi")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 25
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 260.0
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.690196, 0.101961, 0.168627, 1)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fvtld")
+volume_db = -27.581
+autoplay = true
+
+[node name="CrashSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_oh5ij")

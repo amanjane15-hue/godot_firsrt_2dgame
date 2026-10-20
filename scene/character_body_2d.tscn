@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://snbltce7er3j"]
+
+[ext_resource type="Script" uid="uid://dil5fp1kfoabh" path="res://scripts/character_body_2d.gd" id="1_86iwx"]
+[ext_resource type="Texture2D" uid="uid://cxo3hjm1cky0n" path="res://pixel platformer/kenney_pixel-platformer/Tiles/Characters/tile_0024.png" id="1_gd05a"]
+[ext_resource type="Texture2D" uid="uid://1gj5xlnlo1uk" path="res://pixel platformer/kenney_pixel-platformer/Tiles/Characters/tile_0025.png" id="2_86iwx"]
+[ext_resource type="Texture2D" uid="uid://cy37gnbi520u6" path="res://pixel platformer/kenney_pixel-platformer/Tiles/Characters/tile_0026.png" id="3_318mt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8c3x"]
+resource_name = "Walk"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gd05a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_86iwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_318mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_86iwx")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogaei"]
+radius = 11.5798
+
+[node name="player1" type="CharacterBody2D"]
+light_mask = 4
+visibility_layer = 512
+script = ExtResource("1_86iwx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_b8c3x")
+animation = &"Fly"
+frame_progress = 0.853023
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.84104, 2.95174)
+shape = SubResource("CircleShape2D_ogaei")

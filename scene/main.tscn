@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=3 uid="uid://563ppn6qt31s"]
+
+[ext_resource type="PackedScene" uid="uid://vgqgu2mc5nwq" path="res://scene/player.tscn" id="1_itxqv"]
+[ext_resource type="PackedScene" uid="uid://c1ya2w0js0bma" path="res://scene/newworld.tscn" id="2_brvut"]
+[ext_resource type="PackedScene" uid="uid://q37vajqr4vwx" path="res://scene/car.tscn" id="3_wp4xf"]
+[ext_resource type="Script" uid="uid://dax27xsuhw64s" path="res://scripts/game_ui.gd" id="4_brvut"]
+[ext_resource type="Script" uid="uid://cvrd8ff38wmd0" path="res://scripts/finish_line.gd" id="5_0ha60"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ha60"]
+size = Vector2(54, 99)
+
+[node name="Main" type="Node2D"]
+
+[node name="newworld" parent="." instance=ExtResource("2_brvut")]
+
+[node name="player" parent="." instance=ExtResource("1_itxqv")]
+position = Vector2(0, 315)
+scale = Vector2(2.72923, 2.73394)
+
+[node name="Car" parent="." instance=ExtResource("3_wp4xf")]
+position = Vector2(196, 697)
+
+[node name="Car2" parent="." instance=ExtResource("3_wp4xf")]
+position = Vector2(397, 860)
+
+[node name="Car5" parent="." instance=ExtResource("3_wp4xf")]
+position = Vector2(397, 1282)
+
+[node name="Car3" parent="." instance=ExtResource("3_wp4xf")]
+position = Vector2(664, -78)
+rotation = 1.5708
+move_down = true
+
+[node name="Car6" parent="." instance=ExtResource("3_wp4xf")]
+position = Vector2(666, -589)
+rotation = 1.5708
+move_down = true
+
+[node name="Car4" parent="." instance=ExtResource("3_wp4xf")]
+position = Vector2(864, -280)
+rotation = 1.5708
+move_down = true
+
+[node name="FinishLine" type="Area2D" parent="."]
+collision_layer = 4
+script = ExtResource("5_0ha60")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
+light_mask = 0
+visibility_layer = 256
+position = Vector2(1151, 310)
+shape = SubResource("RectangleShape2D_0ha60")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameUI" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_brvut")
+
+[node name="TimerLabel" type="Label" parent="UI/GameUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 8.0
+offset_right = 1138.0
+offset_bottom = 31.0
+text = "Time: 0.00s"
+
+[node name="StartMenu" type="Panel" parent="UI/GameUI"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="UI/GameUI/StartMenu"]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 262.0
+offset_right = 433.0
+offset_bottom = 285.0
+scale = Vector2(3.77425, 4.0463)
+text = "CROSS THE ROAD"
+
+[node name="StartButton" type="Button" parent="UI/GameUI/StartMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 422.0
+offset_top = 387.0
+offset_right = 528.0
+offset_bottom = 418.0
+scale = Vector2(2.05649, 2.00648)
+text = "START GAME"
+
+[node name="WinMenu" type="Panel" parent="UI/GameUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FinalTimeLabel" type="Label" parent="UI/GameUI/WinMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 298.0
+offset_top = 262.0
+offset_right = 433.0
+offset_bottom = 285.0
+scale = Vector2(3.77425, 4.0463)
+text = "LEVEL COMPLETE"
+
+[node name="RestartButton" type="Button" parent="UI/GameUI/WinMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 422.0
+offset_top = 387.0
+offset_right = 528.0
+offset_bottom = 418.0
+scale = Vector2(2.05649, 2.00648)
+text = "PLAY AGAIN"
+
+[connection signal="body_entered" from="FinishLine" to="FinishLine" method="_on_body_entered"]
